@@ -1,15 +1,10 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
-import {
-  ArrowDown,
-  Github,
-  Linkedin,
-  Mail,
-  Twitter,
-} from 'lucide-react';
-import FloatingIcons from '../components/FloatingIcons'; // ✅ updated import path
+import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import FloatingIcons from "../components/FloatingIcons";
+import ThemeToggle from "../components/ThemeToggle";
 
 const HomeSection: React.FC = () => {
   const typingRef = useRef<HTMLSpanElement>(null);
@@ -17,7 +12,11 @@ const HomeSection: React.FC = () => {
   useEffect(() => {
     if (!typingRef.current) return;
 
-    const words = ["Software Developer"];
+    const words = [
+      "Software Developer",
+      "Tech Enthusiast",
+      "Full Stack Engineer",
+    ];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -33,7 +32,7 @@ const HomeSection: React.FC = () => {
         charIndex++;
       }
 
-      let typeSpeed = isDeleting ? 50 : 100;
+      let typeSpeed = isDeleting ? 40 : 90;
 
       if (!isDeleting && charIndex === currentWord.length) {
         typeSpeed = 2000;
@@ -41,7 +40,7 @@ const HomeSection: React.FC = () => {
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         wordIndex = (wordIndex + 1) % words.length;
-        typeSpeed = 500;
+        typeSpeed = 600;
       }
 
       setTimeout(type, typeSpeed);
@@ -60,25 +59,37 @@ const HomeSection: React.FC = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-50 dark:bg-black px-4"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 to-white dark:from-[#0f0f0f] dark:to-black px-4"
     >
-      {/* Floating animated icons */}
+      {/* Theme Toggle */}
+      <div className="absolute top-4 right-4 z-20">
+        <ThemeToggle />
+      </div>
+
+      {/* Floating Icons */}
       <FloatingIcons />
 
-      <div className="relative z-10 max-w-3xl text-center">
+      {/* Glow Background */}
+      <div className="absolute inset-0 -z-10 blur-3xl opacity-30 pointer-events-none">
+        <div className="absolute w-96 h-96 bg-teal-400 rounded-full top-10 left-1/3 mix-blend-multiply filter blur-3xl animate-pulse opacity-30" />
+        <div className="absolute w-96 h-96 bg-blue-500 rounded-full top-32 left-2/3 mix-blend-multiply filter blur-3xl animate-pulse opacity-30" />
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-4xl text-center flex flex-col items-center justify-center w-full">
         <motion.h1
-          className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 select-text"
+          className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 tracking-tight leading-tight"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <span className="bg-gradient-to-r from-blue-500 to-teal-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-teal-400 bg-clip-text text-transparent">
             Aditya Kumar Tiwari
           </span>
         </motion.h1>
 
         <motion.div
-          className="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-6 min-h-[40px]"
+          className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 mb-6 min-h-[40px] font-medium"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -87,16 +98,16 @@ const HomeSection: React.FC = () => {
         </motion.div>
 
         <motion.p
-          className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto"
+          className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl leading-relaxed"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
         >
-          I build exceptional digital experiences with clean, efficient code and a focus on
-          performance and user experience. Specializing in modern web technologies and creating
-          scalable solutions.
+          I transform ideas into immersive web experiences—crafted with clean
+          code, performance-driven design, and a modern tech stack.
         </motion.p>
 
+        {/* Quick Links */}
         <motion.div
           className="flex flex-wrap justify-center gap-4 mb-12"
           initial={{ opacity: 0 }}
@@ -107,9 +118,9 @@ const HomeSection: React.FC = () => {
             <motion.a
               key={index}
               href={item.href}
-              className="px-6 py-3 bg-gray-900/10 dark:bg-white/10 backdrop-blur-sm rounded-full text-gray-800 dark:text-gray-200 font-medium hover:bg-gray-900/20 dark:hover:bg-white/20 transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 border border-gray-300 dark:border-gray-600 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-full text-gray-900 dark:text-white font-medium hover:bg-white/50 hover:dark:bg-white/20 transition-all duration-300 shadow-md"
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.94 }}
             >
               <span className="flex items-center gap-2">
                 {item.icon} {item.text}
@@ -118,68 +129,60 @@ const HomeSection: React.FC = () => {
           ))}
         </motion.div>
 
+        {/* Social Icons */}
         <motion.div
-          className="flex justify-center space-x-6"
+          className="flex justify-center gap-5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          <motion.a
-            href="https://github.com/adityakmrtiwari"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Github size={24} />
-          </motion.a>
-          <motion.a
-            href="https://www.linkedin.com/in/adityakmrtiwari/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Linkedin size={24} />
-          </motion.a>
-          <motion.a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Twitter size={24} />
-          </motion.a>
-          <motion.a
-            href="mailto:adityakmrtiwari@gmail.com"
-            className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Mail size={24} />
-          </motion.a>
+          {[
+            {
+              icon: <Github size={20} />,
+              href: "https://github.com/adityakmrtiwari",
+            },
+            {
+              icon: <Linkedin size={20} />,
+              href: "https://linkedin.com/in/adityakmrtiwari/",
+            },
+            { icon: <Twitter size={20} />, href: "https://twitter.com" },
+            {
+              icon: <Mail size={20} />,
+              href: "mailto:adityakmrtiwari@gmail.com",
+            },
+          ].map((item, idx) => (
+            <motion.a
+              key={idx}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-neutral-900 text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:dark:text-blue-400 transition-all duration-300 shadow-md"
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {item.icon}
+            </motion.a>
+          ))}
         </motion.div>
       </div>
 
-      {/* Scroll Down Arrow */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center select-none"
+      {/* Scroll Down Indicator */}
+      <motion.a
+        href="#about"
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 select-none"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2 }}
       >
-        <span className="block text-sm text-gray-600 dark:text-gray-400 mb-2">Scroll Down</span>
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          className="flex flex-col items-center"
+          animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ArrowDown className="text-gray-600 dark:text-gray-400" size={24} />
+          <span className="text-base md:text-lg mb-1">Scroll Down</span>
+          <ArrowDown size={22} />
         </motion.div>
-      </motion.div>
+      </motion.a>
     </section>
   );
 };

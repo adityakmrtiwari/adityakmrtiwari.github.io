@@ -33,9 +33,9 @@ const AboutSection: React.FC = () => {
                 />
               </div>
               
-              <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-blue-500 rounded-full flex items-center justify-center shadow-lg text-white font-bold text-lg select-none">
-                5+ Years
-              </div>
+              {/* <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-blue-500 rounded-full flex items-center justify-center shadow-lg text-white font-bold text-lg select-none">
+                1+ Years
+              </div> */}
             </div>
             
             <div>
@@ -75,7 +75,7 @@ const AboutSection: React.FC = () => {
               </dl>
               
               <a
-                href="/files/Aditya_Kumar_Tiwari_Resume.pdf"  // update this path to your actual resume file
+                href="/ADITYA_CV R4.pdf"  // update this path to your actual resume file
                 download
                 className="flex items-center justify-center sm:justify-start gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto select-none"
               >
