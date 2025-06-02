@@ -13,9 +13,10 @@ const HomeSection: React.FC = () => {
     if (!typingRef.current) return;
 
     const words = [
-      "Software Developer",
-      "Tech Enthusiast",
-      "Full Stack Engineer",
+      "Software Architect",
+      "Tech Innovator",
+      "Full Stack Developer",
+      "Creative Coder",
     ];
     let wordIndex = 0;
     let charIndex = 0;
@@ -32,15 +33,15 @@ const HomeSection: React.FC = () => {
         charIndex++;
       }
 
-      let typeSpeed = isDeleting ? 40 : 90;
+      let typeSpeed = isDeleting ? 60 : 120;
 
       if (!isDeleting && charIndex === currentWord.length) {
-        typeSpeed = 2000;
+        typeSpeed = 1500;
         isDeleting = true;
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         wordIndex = (wordIndex + 1) % words.length;
-        typeSpeed = 600;
+        typeSpeed = 500;
       }
 
       setTimeout(type, typeSpeed);
@@ -50,117 +51,123 @@ const HomeSection: React.FC = () => {
   }, []);
 
   const quickLinks = [
-    { text: "About Me", href: "#about", icon: "👨‍💻" },
-    { text: "My Skills", href: "#skills", icon: "⚡" },
-    { text: "Projects", href: "#projects", icon: "🚀" },
-    { text: "Contact", href: "#contact", icon: "📧" },
+    { text: "Education", href: "#education", icon: "🎓" },
+    { text: "Experience", href: "#experience", icon: "💼" },
+    { text: "Projects", href: "#projects", icon: "📁" },
+    { text: "Skills", href: "#skills", icon: "⚙" },
+    { text: "Certificates", href: "#certificates", icon: "📜" },
+    { text: "Contact Me", href: "#contact", icon: "📧" },
   ];
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-gray-50 to-white dark:from-[#0f0f0f] dark:to-black px-4"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-black"
     >
-      {/* Theme Toggle */}
-      <div className="absolute top-4 right-4 z-20">
+      {/* Animated Background */}
+      <motion.div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(59,130,246,0.15)_0%,_transparent_70%)] dark:bg-[radial-gradient(circle_at_50%_50%,_rgba(59,130,246,0.15)_0%,_transparent_70%)]"
+        animate={{
+          scale: [1, 1.1, 1],
+          opacity: [0.15, 0.3, 0.15],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,_rgba(236,72,153,0.1)_0%,_transparent_60%)] dark:bg-[radial-gradient(circle_at_30%_70%,_rgba(236,72,153,0.1)_0%,_transparent_60%)]"
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.1, 0.25, 0.1],
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+      />
+
+      {/* Theme Toggle (Top-right corner) */}
+      <div className="fixed top-1.5 right-4 z-50">
         <ThemeToggle />
       </div>
 
       {/* Floating Icons */}
-      <FloatingIcons />
-
-      {/* Glow Background */}
-      <div className="absolute inset-0 -z-10 blur-3xl opacity-30 pointer-events-none">
-        <div className="absolute w-96 h-96 bg-teal-400 rounded-full top-10 left-1/3 mix-blend-multiply filter blur-3xl animate-pulse opacity-30" />
-        <div className="absolute w-96 h-96 bg-blue-500 rounded-full top-32 left-2/3 mix-blend-multiply filter blur-3xl animate-pulse opacity-30" />
+      <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none">
+        <FloatingIcons />
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-4xl text-center flex flex-col items-center justify-center w-full">
+      <div className="relative z-10 text-center flex flex-col items-center justify-center w-full px-4">
         <motion.h1
-          className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 tracking-tight leading-tight"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-400 tracking-tight"
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
+          transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
         >
-          <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-teal-400 bg-clip-text text-transparent">
-            Aditya Kumar Tiwari
-          </span>
+          Aditya Kumar Tiwari
         </motion.h1>
 
         <motion.div
-          className="text-xl md:text-2xl text-gray-800 dark:text-gray-300 mb-6 min-h-[40px] font-medium"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          className="text-2xl md:text-3xl text-gray-700 dark:text-white mb-6 min-h-[40px] font-medium"
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
         >
           <span ref={typingRef}></span>
         </motion.div>
 
         <motion.p
-          className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-2xl leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
+          className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl leading-relaxed"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
         >
-          I transform ideas into immersive web experiences—crafted with clean
-          code, performance-driven design, and a modern tech stack.
+          I build exceptional digital experiences with clean, efficient code and a focus on performance and user experience. Specializing in modern web technologies and creating scalable solutions.
         </motion.p>
-
-        {/* Quick Links */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-4 mb-12"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
-          {quickLinks.map((item, index) => (
-            <motion.a
-              key={index}
-              href={item.href}
-              className="px-6 py-3 border border-gray-300 dark:border-gray-600 bg-white/30 dark:bg-white/10 backdrop-blur-md rounded-full text-gray-900 dark:text-white font-medium hover:bg-white/50 hover:dark:bg-white/20 transition-all duration-300 shadow-md"
-              whileHover={{ scale: 1.06 }}
-              whileTap={{ scale: 0.94 }}
-            >
-              <span className="flex items-center gap-2">
-                {item.icon} {item.text}
-              </span>
-            </motion.a>
-          ))}
-        </motion.div>
 
         {/* Social Icons */}
         <motion.div
-          className="flex justify-center gap-5"
+          className="flex justify-center gap-4 mb-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
+          transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
         >
           {[
-            {
-              icon: <Github size={20} />,
-              href: "https://github.com/adityakmrtiwari",
-            },
-            {
-              icon: <Linkedin size={20} />,
-              href: "https://linkedin.com/in/adityakmrtiwari/",
-            },
-            { icon: <Twitter size={20} />, href: "https://twitter.com" },
-            {
-              icon: <Mail size={20} />,
-              href: "mailto:adityakmrtiwari@gmail.com",
-            },
+            { icon: <Github size={22} />, href: "https://github.com/adityakmrtiwari", label: "GitHub" },
+            { icon: <Linkedin size={22} />, href: "https://linkedin.com/in/adityakmrtiwari/", label: "LinkedIn" },
+            { icon: <Twitter size={22} />, href: "https://twitter.com", label: "Twitter" },
+            { icon: <Mail size={22} />, href: "mailto:adityakmrtiwari@gmail.com", label: "Email" },
           ].map((item, idx) => (
             <motion.a
               key={idx}
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-neutral-900 text-gray-700 dark:text-gray-300 hover:text-blue-500 hover:dark:text-blue-400 transition-all duration-300 shadow-md"
-              whileHover={{ scale: 1.2 }}
+              className="relative group w-12 h-12 flex items-center justify-center rounded-full bg-gray-200 dark:bg-black/30 backdrop-blur-sm text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-cyan-300 transition-all duration-500"
+              whileHover={{ scale: 1.2, rotate: 8, boxShadow: "0 0 25px rgba(0, 123, 255, 0.3)" }}
               whileTap={{ scale: 0.9 }}
             >
               {item.icon}
+              <span className="absolute -top-10 opacity-0 group-hover:opacity-100 bg-gray-800 dark:bg-black/90 text-white text-xs px-3 py-1.5 rounded-full transition-all duration-500">
+                {item.label}
+              </span>
+            </motion.a>
+          ))}
+        </motion.div>
+
+        {/* Quick Links */}
+        <motion.div
+          className="flex flex-wrap justify-center gap-3 mb-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
+        >
+          {quickLinks.map((item, index) => (
+            <motion.a
+              key={index}
+              href={item.href}
+              className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 dark:bg-black/50 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-black/70 rounded-full text-gray-700 dark:text-gray-300 font-medium transition-all duration-500 border border-gray-300 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/20"
+              whileHover={{ scale: 1.05, boxShadow: "0 8px 25px rgba(0, 123, 255, 0.15)" }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span>{item.icon}</span>
+              <span>{item.text}</span>
             </motion.a>
           ))}
         </motion.div>
@@ -169,18 +176,18 @@ const HomeSection: React.FC = () => {
       {/* Scroll Down Indicator */}
       <motion.a
         href="#about"
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400 transition-all duration-300 select-none"
-        initial={{ opacity: 0, y: 20 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-cyan-300 transition-all duration-500 select-none"
+        initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2 }}
+        transition={{ delay: 1.4, duration: 0.8, ease: "easeOut" }}
       >
         <motion.div
           className="flex flex-col items-center"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [0, 20, 0], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <span className="text-base md:text-lg mb-1">Scroll Down</span>
-          <ArrowDown size={22} />
+          <span className="text-base mb-2">Scroll Down</span>
+          <ArrowDown size={26} />
         </motion.div>
       </motion.a>
     </section>

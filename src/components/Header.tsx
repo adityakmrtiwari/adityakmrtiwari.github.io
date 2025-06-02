@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
 import { motion, AnimatePresence } from 'framer-motion';
 import debounce from 'lodash.debounce';
 
 const navLinks = [
   { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
   { name: 'Education', href: '#education' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -25,21 +24,25 @@ const Header: React.FC = () => {
     setIsHomeVisible(homeBottom > 0);
     setIsScrolled(window.scrollY > 10);
 
-    const scrollY = window.scrollY;
+    let newActiveSection = 'home';
+    const threshold = window.innerHeight * 0.3;
+
     document.querySelectorAll('section[id]').forEach((section) => {
       const el = section as HTMLElement;
-      const sectionTop = el.offsetTop - 100;
-      const sectionHeight = el.offsetHeight;
-      const id = el.getAttribute('id') || '';
-      if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-        setActiveSection(id);
+      const rect = el.getBoundingClientRect();
+
+      if (rect.top <= threshold && rect.bottom >= threshold) {
+        newActiveSection = el.getAttribute('id') || 'home';
       }
     });
+
+    setActiveSection(newActiveSection);
   }, []);
 
   useEffect(() => {
     const debouncedScroll = debounce(handleScroll, 50);
     window.addEventListener('scroll', debouncedScroll);
+    handleScroll();
     return () => window.removeEventListener('scroll', debouncedScroll);
   }, [handleScroll]);
 
@@ -58,22 +61,10 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isHomeVisible ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
-      } ${
-        isScrolled
-          ? 'bg-gray-900/95 backdrop-blur-md shadow-md py-2'
-          : 'bg-transparent py-3'
-      }`}
+      } ${isScrolled ? 'bg-gray-900/95 backdrop-blur-md shadow-md py-2' : 'bg-transparent py-3'}`}
     >
-      {/* ThemeToggle absolutely positioned */}
-      <div className="absolute top-0.5 right-4 z-[60]">
-        <div className="p-1 border border-gray-600 rounded-md bg-gray-900/80 backdrop-blur-md">
-          <ThemeToggle />
-        </div>
-      </div>
-
       <div className="container mx-auto px-4 md:px-6">
         <div className="relative flex items-center justify-between">
-          {/* Left Logo */}
           <motion.a
             href="#home"
             onClick={(e) => handleNavClick(e, 'home')}
@@ -84,19 +75,18 @@ const Header: React.FC = () => {
             Portfolio
           </motion.a>
 
-          {/* Centered Navigation */}
-          <nav className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-3">
+          <nav className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex space-x-5">
             {navLinks.map((link) => (
               <motion.a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href.substring(1))}
-                className={`relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                className={`relative px-3 py-1.5 rounded-md text-base font-semibold transition-colors ${
                   activeSection === link.href.substring(1)
-                    ? 'bg-gradient-to-r from-blue-500 to-teal-400 text-white shadow'
+                    ? 'bg-gradient-to-r from-blue-500 to-teal-400 text-white shadow-lg'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
                 }`}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
                 {link.name}
@@ -104,7 +94,6 @@ const Header: React.FC = () => {
             ))}
           </nav>
 
-          {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
             <motion.button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -119,7 +108,6 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div

@@ -180,33 +180,6 @@ const SkillsSection: React.FC = () => {
             );
           })}
         </motion.div>
-
-        <motion.div
-          className="flex justify-center gap-4 mt-16 flex-wrap"
-          variants={fadeSlideVariant}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          {[
-            { text: 'Education', href: '#education' },
-            { text: 'Experience', href: '#experience' },
-            { text: 'View Projects', href: '#projects' },
-            { text: 'Skills', href: '#skills' },
-            { text: 'Certificates', href: '#certificates' },
-            { text: 'Contact Me', href: '#contact' },
-          ].map((link, index) => (
-            <motion.a
-              key={index}
-              href={link.href}
-              className="px-6 py-2 bg-gray-900/10 dark:bg-white/10 backdrop-blur-sm rounded-full text-gray-800 dark:text-gray-200 font-medium transition-colors duration-300 hover:bg-gray-900/20 dark:hover:bg-white/20"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {link.text}
-            </motion.a>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
