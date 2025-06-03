@@ -1,14 +1,15 @@
-import { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import Header from './components/Header';
-import HomeSection from './components/HomeSection';
-import AboutSection from './components/AboutSection';
-import SkillsSection from './components/SkillsSection';
-import ProjectsSection from './components/ProjectsSection';
-import ExperienceSection from './components/ExperienceSection';
-import EducationSection from './components/EducationSection';
-import ContactSection from './components/ContactSection';
-import Footer from './components/Footer';
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import Header from "./components/Header";
+import HomeSection from "./components/HomeSection";
+import AboutSection from "./components/AboutSection";
+import SkillsSection from "./components/SkillsSection";
+import ProjectsSection from "./components/ProjectsSection";
+import ExperienceSection from "./components/ExperienceSection";
+import CertificateSection from './components/CertificateSection';
+import EducationSection from "./components/EducationSection";
+import ContactSection from "./components/ContactSection";
+import Footer from "./components/Footer";
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -77,6 +78,17 @@ function App() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <SkillsSection />
+        </motion.section>
+
+        <motion.section
+          id="certificates"
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.55 }}
+        >
+          <CertificateSection />
         </motion.section>
 
         <motion.section

@@ -26,10 +26,16 @@ const HomeSection: React.FC = () => {
       const currentWord = words[wordIndex];
 
       if (isDeleting) {
-        typingRef.current!.textContent = currentWord.substring(0, charIndex - 1);
+        typingRef.current!.textContent = currentWord.substring(
+          0,
+          charIndex - 1
+        );
         charIndex--;
       } else {
-        typingRef.current!.textContent = currentWord.substring(0, charIndex + 1);
+        typingRef.current!.textContent = currentWord.substring(
+          0,
+          charIndex + 1
+        );
         charIndex++;
       }
 
@@ -79,7 +85,12 @@ const HomeSection: React.FC = () => {
           scale: [1, 1.15, 1],
           opacity: [0.1, 0.25, 0.1],
         }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 3,
+        }}
       />
 
       {/* Theme Toggle (Top-right corner) */}
@@ -118,7 +129,10 @@ const HomeSection: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
         >
-          I build exceptional digital experiences with clean, efficient code and a focus on performance and user experience. Specializing in modern web technologies and creating scalable solutions.
+          I develop scalable, high-performance software solutions that transform
+          complex challenges into elegant, user-centric applications. Committed
+          to clean code and thoughtful design, I deliver impactful results that
+          align seamlessly with business objectives.
         </motion.p>
 
         {/* Social Icons */}
@@ -129,10 +143,26 @@ const HomeSection: React.FC = () => {
           transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
         >
           {[
-            { icon: <Github size={22} />, href: "https://github.com/adityakmrtiwari", label: "GitHub" },
-            { icon: <Linkedin size={22} />, href: "https://linkedin.com/in/adityakmrtiwari/", label: "LinkedIn" },
-            { icon: <Twitter size={22} />, href: "https://twitter.com", label: "Twitter" },
-            { icon: <Mail size={22} />, href: "mailto:adityakmrtiwari@gmail.com", label: "Email" },
+            {
+              icon: <Github size={22} />,
+              href: "https://github.com/adityakmrtiwari",
+              label: "GitHub",
+            },
+            {
+              icon: <Linkedin size={22} />,
+              href: "https://linkedin.com/in/adityakmrtiwari/",
+              label: "LinkedIn",
+            },
+            {
+              icon: <Twitter size={22} />,
+              href: "https://twitter.com",
+              label: "Twitter",
+            },
+            {
+              icon: <Mail size={22} />,
+              href: "mailto:adityakmrtiwari@gmail.com",
+              label: "Email",
+            },
           ].map((item, idx) => (
             <motion.a
               key={idx}
@@ -140,7 +170,11 @@ const HomeSection: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="relative group w-12 h-12 flex items-center justify-center rounded-full bg-gray-200 dark:bg-black/30 backdrop-blur-sm text-gray-700 dark:text-gray-400 hover:text-blue-600 dark:hover:text-cyan-300 transition-all duration-500"
-              whileHover={{ scale: 1.2, rotate: 8, boxShadow: "0 0 25px rgba(0, 123, 255, 0.3)" }}
+              whileHover={{
+                scale: 1.2,
+                rotate: 8,
+                boxShadow: "0 0 25px rgba(0, 123, 255, 0.3)",
+              }}
               whileTap={{ scale: 0.9 }}
             >
               {item.icon}
@@ -163,7 +197,10 @@ const HomeSection: React.FC = () => {
               key={index}
               href={item.href}
               className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 dark:bg-black/50 backdrop-blur-sm hover:bg-gray-300 dark:hover:bg-black/70 rounded-full text-gray-700 dark:text-gray-300 font-medium transition-all duration-500 border border-gray-300 dark:border-white/10 hover:border-gray-400 dark:hover:border-white/20"
-              whileHover={{ scale: 1.05, boxShadow: "0 8px 25px rgba(0, 123, 255, 0.15)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 8px 25px rgba(0, 123, 255, 0.15)",
+              }}
               whileTap={{ scale: 0.95 }}
             >
               <span>{item.icon}</span>
