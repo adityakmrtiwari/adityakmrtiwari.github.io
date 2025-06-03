@@ -22,60 +22,84 @@ const AboutSection: React.FC = () => {
               Get to know more about me, my background, and what I do.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative group">
               <div className="aspect-square overflow-hidden rounded-2xl shadow-xl">
                 <img 
-                  src="/Aditya.png"  // update this path to your actual image file
+                  src="/Aditya.png"
                   alt="Profile photo of Aditya Kumar Tiwari" 
                   className="w-full h-full object-cover transform transition-transform duration-700 ease-in-out group-hover:scale-105"
                 />
               </div>
-              
-              {/* <div className="absolute -bottom-6 -right-6 w-28 h-28 bg-blue-500 rounded-full flex items-center justify-center shadow-lg text-white font-bold text-lg select-none">
-                1+ Years
-              </div> */}
             </div>
-            
+
             <div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
                 Who am I?
               </h3>
-              
+
               <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
                 I'm a passionate Full Stack Developer with expertise in modern web technologies.
                 With a strong foundation in both frontend and backend development, I create
                 responsive, user-friendly applications that solve real-world problems.
               </p>
-              
+
               <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                 I specialize in React, Express, Node.js, Next.js, and TypeScript, constantly
                 expanding my knowledge to stay at the forefront of web development. I'm dedicated
                 to writing clean, maintainable code and creating intuitive user experiences.
               </p>
-              
-              <dl className="grid grid-cols-2 gap-4 mb-8">
-                <div>
-                  <dt className="font-bold text-gray-900 dark:text-white mb-2">Name:</dt>
-                  <dd className="text-gray-600 dark:text-gray-400">Aditya Kumar Tiwari</dd>
-                </div>
-                <div>
-                  <dt className="font-bold text-gray-900 dark:text-white mb-2">Email:</dt>
-                  <dd className="text-gray-600 dark:text-gray-400">adityakmrtiwari@gmail.com</dd>
-                </div>
-                <div>
-                  <dt className="font-bold text-gray-900 dark:text-white mb-2">Location:</dt>
-                  <dd className="text-gray-600 dark:text-gray-400">India</dd>
-                </div>
-                <div>
-                  <dt className="font-bold text-gray-900 dark:text-white mb-2">Availability:</dt>
-                  <dd className="text-gray-600 dark:text-gray-400">Available for hire</dd>
-                </div>
-              </dl>
-              
+
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                My Coding Profiles
+              </h3>
+
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                {[
+                  {
+                    name: 'LeetCode',
+                    url: 'https://leetcode.com/adityakmrtiwari/',
+                    icon: '/icons/leetcode.png',
+                  },
+                  {
+                    name: 'CodeChef',
+                    url: 'https://www.codechef.com/users/adityakmrtiwar',
+                    icon: '/icons/codechef.png',
+                  },
+                  {
+                    name: 'Codeforces',
+                    url: 'https://www.codeforces.com/profile/adityakmrtiwari',
+                    icon: '/icons/codeforces.png',
+                  },
+                  {
+                    name: 'HackerRank',
+                    url: 'https://www.hackerrank.com/adityakmrtiwari',
+                    icon: '/icons/hackerrank.png',
+                  },
+                ].map((profile) => (
+                  <li key={profile.name}>
+                    <a
+                      href={profile.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow hover:shadow-lg transform transition-transform duration-300 hover:scale-105 hover:bg-gray-200 dark:hover:bg-gray-700"
+                    >
+                      <img
+                        src={profile.icon}
+                        alt={profile.name}
+                        className="w-6 h-6 transition-transform duration-300"
+                      />
+                      <span className="font-medium text-gray-800 dark:text-gray-200 transition-colors duration-300">
+                        {profile.name}
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+
               <a
-                href="/ADITYA_CV R4.pdf"  // update this path to your actual resume file
+                href="/ADITYA_CV R4.pdf"
                 download
                 className="flex items-center justify-center sm:justify-start gap-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl w-full sm:w-auto select-none"
               >
