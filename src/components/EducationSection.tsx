@@ -50,7 +50,10 @@ const educations = [
 
 const EducationSection: React.FC = () => {
   return (
-    <section id="education" className="py-20 bg-gray-50 dark:bg-black">
+    <section
+      id="education"
+      className="relative py-20 min-h-[80vh] bg-[radial-gradient(circle_at_50%_40%,_rgba(255,192,203,0.10)_0%,_rgba(255,255,255,1)_100%)] dark:bg-[radial-gradient(circle_at_50%_40%,_rgba(30,30,30,0.95)_0%,_rgba(10,10,10,1)_100%)]"
+    >
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <motion.div
           className="text-center mb-16"
@@ -58,11 +61,11 @@ const EducationSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-extrabold mb-4 text-gray-900 dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-400 tracking-tight">
             Education
           </h2>
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-6 rounded"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
             My academic background and qualifications.
           </p>
         </motion.div>
@@ -71,19 +74,17 @@ const EducationSection: React.FC = () => {
           {educations.map((edu, index) => (
             <motion.div
               key={edu.id}
-              className="bg-white dark:bg-gray-900/60 backdrop-blur-sm p-8 rounded-2xl shadow-lg hover:shadow-2xl border-l-6 border-blue-500 transition-all duration-300"
+              className="group bg-white/80 dark:bg-black/40 backdrop-blur-md p-8 rounded-2xl shadow-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] focus:outline-none"
               initial={{ opacity: 0, x: index % 2 === 0 ? 60 : -60 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{
-                delay: index * 0.15,
-                type: "spring",
-                stiffness: 50,
-              }}
-              whileHover={{ y: -8 }}
+              transition={{ delay: index * 0.15, type: "spring", stiffness: 50 }}
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              tabIndex={0}
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-5">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                <h3 className="text-2xl font-bold text-black dark:text-white">
                   {edu.degree}
                 </h3>
                 <div className="flex items-center text-blue-600 dark:text-blue-400 font-semibold">
@@ -99,15 +100,15 @@ const EducationSection: React.FC = () => {
                   {edu.location}
                 </div>
               </div>
-              <p className="text-gray-700 dark:text-gray-400 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 {edu.description}
               </p>
               {edu.achievements && (
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">
+                  <h4 className="text-lg font-semibold text-black dark:text-gray-200 mb-2">
                     Achievements:
                   </h4>
-                  <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-400">
+                  <ul className="list-disc list-inside space-y-1 text-gray-700 dark:text-gray-300">
                     {edu.achievements.map((achievement, i) => (
                       <li key={i}>{achievement}</li>
                     ))}

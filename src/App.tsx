@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect, useState, useRef } from 'react';
 import { motion } from "framer-motion";
 import Header from "./components/Header";
 import HomeSection from "./components/HomeSection";
@@ -10,28 +10,64 @@ import CertificateSection from './components/CertificateSection';
 import EducationSection from "./components/EducationSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
+import QuickLinksBar from './components/QuickLinksBar';
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0 },
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut"
+    }
+  }
 };
 
 function App() {
+  const [showStickyQuickLinks, setShowStickyQuickLinks] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return savedTheme === 'dark' || (!savedTheme && prefersDark);
+  });
+  const homeRef = useRef(null);
+
   useEffect(() => {
     document.title = "Aditya Kumar Tiwari | Portfolio";
   }, []);
 
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
+  useEffect(() => {
+    const homeSection = document.getElementById('home');
+    if (!homeSection) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => setShowStickyQuickLinks(!entry.isIntersecting),
+      { threshold: 0.3 }
+    );
+    observer.observe(homeSection);
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDark(prev => !prev);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black text-gray-900 dark:text-white">
-      <Header />
-      <main>
+      <Header isDark={isDark} toggleTheme={toggleTheme} />
+      <main className="relative">
         <motion.section
           id="home"
+          ref={homeRef}
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
+          className="min-h-screen"
         >
           <HomeSection />
         </motion.section>
@@ -42,7 +78,7 @@ function App() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          className="min-h-screen"
         >
           <AboutSection />
         </motion.section>
@@ -53,7 +89,7 @@ function App() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          className="min-h-screen"
         >
           <EducationSection />
         </motion.section>
@@ -64,7 +100,7 @@ function App() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          className="min-h-screen"
         >
           <ProjectsSection />
         </motion.section>
@@ -75,7 +111,7 @@ function App() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          className="min-h-screen"
         >
           <SkillsSection />
         </motion.section>
@@ -86,7 +122,7 @@ function App() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.55 }}
+          className="min-h-screen"
         >
           <CertificateSection />
         </motion.section>
@@ -97,7 +133,7 @@ function App() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          className="min-h-screen"
         >
           <ExperienceSection />
         </motion.section>
@@ -108,12 +144,13 @@ function App() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          className="min-h-screen"
         >
           <ContactSection />
         </motion.section>
       </main>
       <Footer />
+      <QuickLinksBar visible={showStickyQuickLinks} />
     </div>
   );
 }

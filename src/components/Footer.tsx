@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUp } from 'lucide-react';
+import QuickLinksBar from './QuickLinksBar';
 
 const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -10,9 +11,11 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white py-16">
+    <footer
+      className="relative py-10 pb-20 bg-[radial-gradient(circle_at_50%_40%,_rgba(255,192,203,0.10)_0%,_rgba(255,255,255,1)_100%)] dark:bg-[radial-gradient(circle_at_50%_40%,_rgba(30,30,30,0.95)_0%,_rgba(10,10,10,1)_100%)] border-t border-white/10 dark:border-white/5"
+    >
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-800 pb-10 mb-10">
+        <div className="group flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-800 pb-10 mb-10 transition-all duration-300 hover:border-white dark:hover:border-white/30">
           <div className="mb-8 md:mb-0 max-w-md">
             <a
               href="#home"
@@ -34,7 +37,7 @@ const Footer: React.FC = () => {
                   <li key={section}>
                     <a
                       href={`#${section}`}
-                      className="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-white transition-colors duration-300"
+                      className="text-gray-400 dark:text-gray-500 hover:underline hover:text-white dark:hover:text-white transition-colors duration-300"
                     >
                       {section.charAt(0).toUpperCase() + section.slice(1)}
                     </a>
@@ -57,7 +60,7 @@ const Footer: React.FC = () => {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-400 dark:text-gray-500 hover:text-white dark:hover:text-white transition-colors duration-300"
+                      className="text-gray-400 dark:text-gray-500 hover:underline hover:text-white dark:hover:text-white transition-colors duration-300"
                     >
                       {name}
                     </a>

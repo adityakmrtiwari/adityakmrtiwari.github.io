@@ -75,7 +75,10 @@ const ExperienceSection: React.FC = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 bg-gray-50 dark:bg-black">
+    <section
+      id="experience"
+      className="relative py-20 min-h-[80vh] bg-[radial-gradient(circle_at_50%_40%,_rgba(255,192,203,0.10)_0%,_rgba(255,255,255,1)_100%)] dark:bg-[radial-gradient(circle_at_50%_40%,_rgba(30,30,30,0.95)_0%,_rgba(10,10,10,1)_100%)]"
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -124,8 +127,9 @@ const ExperienceSection: React.FC = () => {
                     }`}
                   >
                     <motion.div
-                      className="bg-white dark:bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-xl transition-all cursor-pointer"
+                      className="group bg-white/80 dark:bg-black/40 backdrop-blur-md p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.03]"
                       whileHover={{ y: -5 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4">
                         <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-2 sm:mb-0">

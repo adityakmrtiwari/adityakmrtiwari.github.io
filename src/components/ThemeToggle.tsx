@@ -1,35 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { Moon, Sun } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
-const ThemeToggle: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+interface ThemeToggleProps {
+  isDark: boolean;
+  toggleTheme: () => void;
+}
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-
-    setIsDarkMode(isDark);
-    document.documentElement.classList.toggle('dark', isDark);
-  }, []);
-
-  const toggleTheme = () => {
-    setIsDarkMode(prev => {
-      const newMode = !prev;
-      document.documentElement.classList.toggle('dark', newMode);
-      localStorage.setItem('theme', newMode ? 'dark' : 'light');
-      return newMode;
-    });
-  };
-
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDark, toggleTheme }) => {
   return (
-    <button
+    <motion.button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none"
-      aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+      className="p-1.5 rounded-full bg-white/10 dark:bg-black/30 backdrop-blur-md border border-white/10 dark:border-white/5 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-white dark:hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-cyan-400"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
     >
-      {isDarkMode ? <Sun size={15} /> : <Moon size={15} />}
-    </button>
+      <motion.div
+        initial={false}
+        animate={{ rotate: isDark ? 180 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="text-lg md:text-xl text-gray-800 dark:text-gray-200"
+      >
+        {isDark ? <FaSun /> : <FaMoon />}
+      </motion.div>
+    </motion.button>
   );
 };
 

@@ -1,84 +1,77 @@
-"use client";
-
-import { motion } from "framer-motion";
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import {
-  SiNextdotjs,
-  SiTypescript,
-  SiJavascript,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiMongodb,
-  SiReact,
-  SiPython,
-} from "react-icons/si";
-import { FaAws, FaNodeJs } from "react-icons/fa";
+  SiJavascript, SiTypescript, SiPython, SiReact, SiExpress, SiMongodb,
+  SiTailwindcss, SiGit, SiGithub, SiPostman
+} from 'react-icons/si';
 
-interface FloatingIconProps {
-  icon: React.ReactNode;
-  x: number;
-  y: number;
-  delay: number;
-  size?: number;
-  color: string;
-}
+const icons = [
+  { Icon: SiMongodb, baseColor: '#4DB33D', x: -350, y: -120 },
+  { Icon: SiReact, baseColor: '#61DAFB', x: 320, y: -130 },
+  { Icon: SiPython, baseColor: '#4584B6', x: -260, y: 100 },
+  { Icon: SiTypescript, baseColor: '#2F74C0', x: 260, y: 60 },
+  { Icon: SiExpress, baseColor: '#333333', x: -250, y: -180 },
+  { Icon: SiJavascript, baseColor: '#F0DB4F', x: -320, y: 40 },
+  { Icon: SiTailwindcss, baseColor: '#06B6D4', x: -120, y: 200 },
+  { Icon: SiGit, baseColor: '#F1502F', x: 120, y: 200 },
+  { Icon: SiGithub, baseColor: '#24292E', x: -220, y: 220 },
+  { Icon: SiPostman, baseColor: '#FF6C37', x: 220, y: 220 }
+];
 
-const FloatingIcon = ({
-  icon,
-  x,
-  y,
-  delay,
-  size = 40,
-  color,
-}: FloatingIconProps) => (
-  <motion.div
-    className="absolute pointer-events-none z-0"
-    initial={{ opacity: 0, scale: 0.7, x, y }}
-    animate={{
-      opacity: [0.4, 0.7, 0.4],
-      scale: [1, 1.3, 1],
-      x: [x - 10, x + 10, x - 10],
-      y: [y - 10, y + 10, y - 10],
-    }}
-    transition={{
-      duration: 8,
-      delay,
-      repeat: Infinity,
-      ease: "easeInOut",
-      opacity: { duration: 3 },
-      scale: { duration: 3 },
-    }}
-  >
-    <div className="relative">
-      {icon}
-      <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500/20 dark:from-cyan-500/20 to-purple-500/20 blur-xl"
-        animate={{ opacity: [0.3, 0.6, 0.3] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-    </div>
-  </motion.div>
-);
+const FloatingIcons: React.FC = () => {
+  const [isDark, setIsDark] = useState(false);
 
-export default function FloatingIcons() {
-  const floatingIcons = [
-    { icon: <SiNextdotjs size={45} className="text-gray-500 dark:text-white/60" />, x: -150, y: -120, delay: 1, color: "rgba(255,255,255,0.5)" },
-    { icon: <SiTypescript size={45} className="text-blue-500 dark:text-cyan-400/60" />, x: 160, y: -90, delay: 1.5, color: "rgba(59,130,246,0.5)" },
-    { icon: <SiJavascript size={45} className="text-yellow-500 dark:text-yellow-400/60" />, x: -130, y: 80, delay: 2, color: "rgba(247,223,30,0.5)" },
-    { icon: <SiTailwindcss size={45} className="text-teal-500 dark:text-teal-400/60" />, x: 140, y: 90, delay: 2.5, color: "rgba(6,182,212,0.5)" },
-    { icon: <FaNodeJs size={45} className="text-green-500 dark:text-green-400/60" />, x: -180, y: -50, delay: 3, color: "rgba(51,153,51,0.5)" },
-    { icon: <SiMongodb size={45} className="text-green-600 dark:text-green-500/60" />, x: 180, y: -30, delay: 3.5, color: "rgba(71,162,72,0.5)" },
-    { icon: <SiReact size={45} className="text-blue-400 dark:text-cyan-300/60" />, x: -90, y: 130, delay: 4, color: "rgba(97,218,251,0.5)" },
-    { icon: <SiPython size={45} className="text-blue-600 dark:text-blue-400/60" />, x: 90, y: 130, delay: 4.5, color: "rgba(55,118,171,0.5)" },
-    { icon: <FaAws size={45} className="text-orange-500 dark:text-orange-400/60" />, x: 0, y: -140, delay: 5, color: "rgba(255,153,0,0.5)" },
-  ];
+  // Detect system theme using media query
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    setIsDark(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => setIsDark(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
-      <div className="relative w-[600px] h-[600px] sm:w-[700px] sm:h-[700px] md:w-[800px] md:h-[800px]">
-        {floatingIcons.map((icon, index) => (
-          <FloatingIcon key={index} {...icon} />
-        ))}
-      </div>
+    <div className="pointer-events-none absolute inset-0 w-full h-full z-0 bg-[radial-gradient(circle_at_50%_40%,_rgba(255,192,203,0.04)_0%,_rgba(255,255,255,0)_100%)] dark:bg-[radial-gradient(circle_at_50%_40%,_rgba(30,30,30,0.10)_0%,_rgba(10,10,10,0)_100%)]">
+      {icons.map(({ Icon, baseColor, x, y }, index) => {
+        const adjustedColor = isDark ? baseColor : `${baseColor}CC`; // 80% opacity in light
+        const adjustedOpacity = isDark ? 0.38 : 0.30;
+        const hoverShadow = isDark
+          ? '0 0 24px 4px rgba(34,211,238,0.35), 0 0 8px 2px rgba(59,130,246,0.25)'
+          : '0 0 24px 4px rgba(236,72,153,0.25), 0 0 8px 2px rgba(168,85,247,0.18)';
+
+        return (
+          <motion.div
+            key={index}
+            className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: [adjustedOpacity, adjustedOpacity + 0.05, adjustedOpacity],
+              scale: [1, 1.08, 1],
+              x: [x, x * 1.04, x],
+              y: [y, y * 1.04, y],
+            }}
+            transition={{
+              duration: 9,
+              delay: index * 0.3,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            whileHover={{
+              scale: 1.2,
+              opacity: 0.85,
+              filter: `drop-shadow(${hoverShadow})`,
+              zIndex: 10
+            }}
+            style={{ zIndex: 1 }}
+          >
+            <Icon size={54} style={{ color: adjustedColor, opacity: adjustedOpacity, transition: 'all 0.3s' }} />
+          </motion.div>
+        );
+      })}
     </div>
   );
-}
+};
+
+export default FloatingIcons;

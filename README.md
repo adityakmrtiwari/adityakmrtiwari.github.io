@@ -1,110 +1,137 @@
-# Modern Portfolio Website
+# Portfolio Website - Aditya Kumar Tiwari
 
-A beautiful, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features smooth animations, dark mode support, and a modern design.
+A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features a clean design with smooth animations and transitions, supporting both light and dark themes.
 
-![Portfolio Preview]()
+## 🌟 Features
 
-## ✨ Features
+- **Modern UI/UX**
+  - Clean and professional design
+  - Smooth animations and transitions
+  - Glassmorphism effects
+  - Responsive layout for all devices
+  - Interactive hover and click effects
 
-- 🎨 Modern and clean design
-- 🌓 Dark/Light mode toggle
-- 📱 Fully responsive layout
-- 🎭 Smooth animations with Framer Motion
-- 🎯 Interactive UI elements
-- 📝 Contact form
-- 🔧 Skills showcase
-- 📚 Project portfolio
-- 📜 Education & Experience timeline
-- 🎉 Social media integration
+- **Theme Support**
+  - Light and dark mode
+  - System theme detection
+  - Persistent theme preference
+  - Smooth theme transitions
 
-## 🚀 Tech Stack
+- **Sections**
+  - Home: Introduction and quick links
+  - About: Personal information and coding profiles
+  - Education: Academic background
+  - Experience: Professional experience
+  - Projects: Showcase of work
+  - Skills: Technical expertise
+  - Certificates: Professional certifications
+  - Contact: Contact information and form
+
+- **Interactive Elements**
+  - Floating skill icons
+  - Quick navigation bar
+  - Smooth scrolling
+  - Animated section transitions
+  - Interactive cards with hover effects
+
+## 🛠️ Technologies Used
 
 - React 18
 - TypeScript
 - Tailwind CSS
 - Framer Motion
+- React Icons
 - Lucide Icons
 - Vite
-
-## 🛠️ Installation
-
-1. Clone the repository
-```bash
-git clone https://github.com/yourusername/portfolio.git
-```
-
-2. Install dependencies
-```bash
-npm install
-```
-
-3. Start the development server
-```bash
-npm run dev
-```
-
-4. Build for production
-```bash
-npm run build
-```
 
 ## 📁 Project Structure
 
 ```
-src/
-├── components/         # React components
-│   ├── AboutSection
-│   ├── ContactSection
-│   ├── EducationSection
-│   ├── ExperienceSection
-│   ├── Footer
-│   ├── Header
-│   ├── HeroSection
-│   ├── ProjectsSection
-│   ├── SkillsSection
-│   └── ThemeToggle
-├── App.tsx            # Main App component
-└── main.tsx          # Entry point
+Portfolio React/
+├── public/
+│   ├── icons/
+│   │   ├── leetcode.png
+│   │   ├── codechef.png
+│   │   ├── codeforces.png
+│   │   └── hackerrank.png
+│   └── Aditya.png
+├── src/
+│   ├── components/
+│   │   ├── AboutSection.tsx
+│   │   ├── CertificateSection.tsx
+│   │   ├── ContactSection.tsx
+│   │   ├── EducationSection.tsx
+│   │   ├── ExperienceSection.tsx
+│   │   ├── FloatingIcons.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── HomeSection.tsx
+│   │   ├── ProjectsSection.tsx
+│   │   ├── QuickLinksBar.tsx
+│   │   ├── SkillsSection.tsx
+│   │   └── ThemeToggle.tsx
+│   ├── App.tsx
+│   ├── index.css
+│   └── main.tsx
+├── package.json
+├── tailwind.config.js
+├── tsconfig.json
+└── vite.config.ts
 ```
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/portfolio-react.git
+   cd portfolio-react
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+   ```bash
+   npm run build
+   ```
 
 ## 🎨 Customization
 
-1. Update personal information in respective components
-2. Modify color scheme in `tailwind.config.js`
-3. Add/remove sections as needed
-4. Customize animations in Framer Motion components
+- **Theme Colors**: Modify colors in `tailwind.config.js`
+- **Content**: Update section content in respective component files
+- **Images**: Replace images in the `public` directory
+- **Styling**: Adjust styles in component files and `index.css`
 
-## 🌟 Key Features Explained
+## 📱 Responsive Design
 
-### Responsive Design
 - Mobile-first approach
-- Breakpoints for all screen sizes
-- Flexible grid layouts
+- Breakpoints:
+  - sm: 640px
+  - md: 768px
+  - lg: 1024px
+  - xl: 1280px
+  - 2xl: 1536px
 
-### Animations
-- Smooth section transitions
-- Interactive hover effects
-- Scroll-triggered animations
-- Loading animations
+## 🌐 Browser Support
 
-### Dark Mode
-- System preference detection
-- Manual toggle option
-- Persistent preference storage
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-### Performance
-- Optimized images
-- Lazy loading components
-- Efficient animation handling
-
-## 📝 License
+## 📄 License
 
 MIT License - feel free to use this template for your own portfolio!
 
-## 🤝 Contributing
+## 👤 Author
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📧 Contact
-
-For any questions or feedback, please reach out to [adityakmrtiwri@gmail.com](mailto:adityakmrtiwari@gmail.com)
+Aditya Kumar Tiwari
+- GitHub: [@adityakmrtiwari](https://github.com/adityakmrtiwari)
+- LinkedIn: [Aditya Kumar Tiwari](https://linkedin.com/in/adityakmrtiwari/)

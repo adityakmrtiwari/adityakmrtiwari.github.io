@@ -124,27 +124,28 @@ const SkillsSection: React.FC = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-black">
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+    <section
+      id="skills"
+      className="relative py-20 min-h-[80vh] bg-[radial-gradient(circle_at_50%_40%,_rgba(255,192,203,0.10)_0%,_rgba(255,255,255,1)_100%)] dark:bg-[radial-gradient(circle_at_50%_40%,_rgba(30,30,30,0.95)_0%,_rgba(10,10,10,1)_100%)]"
+    >
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <motion.div
           className="text-center mb-16"
-          variants={fadeSlideVariant}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-            Skills & <span className="text-blue-500 dark:text-blue-400">Expertise</span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-500 dark:from-cyan-300 dark:via-blue-400 dark:to-indigo-400 tracking-tight">
+            Skills
           </h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto mb-6 rounded-full" />
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            I've worked with a variety of technologies and tools throughout my journey as a developer. Here's a breakdown of my technical expertise:
+          <div className="w-20 h-1 bg-blue-500 mx-auto mb-6 rounded"></div>
+          <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+            My technical skills and tools.
           </p>
         </motion.div>
 
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -154,12 +155,18 @@ const SkillsSection: React.FC = () => {
             return (
               <motion.div
                 key={category.title}
-                className="bg-white dark:bg-gray-900/60 backdrop-blur-sm p-6 rounded-xl shadow-lg transition-transform duration-300 hover:shadow-2xl hover:scale-[1.03] cursor-default"
-                variants={fadeSlideVariant}
+                className="group bg-white/80 dark:bg-black/40 backdrop-blur-md p-6 rounded-2xl shadow-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.03]"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="flex items-center gap-3 mb-6">
                   <CategoryIcon className="text-blue-500 dark:text-blue-400" size={26} />
-                  <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{category.title}</h3>
+                  <h3 className="text-xl font-semibold text-black dark:text-white">
+                    {category.title}
+                  </h3>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
@@ -169,7 +176,9 @@ const SkillsSection: React.FC = () => {
                       <motion.div
                         key={skill.name}
                         className="flex items-center gap-2 text-gray-700 dark:text-gray-300 select-none transition duration-300 hover:scale-105 hover:text-blue-500 dark:hover:text-blue-400"
-                        variants={skillItemVariant}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
                       >
                         {SkillIcon && <SkillIcon size={18} className="text-blue-500 dark:text-blue-400" />}
                         <span>{skill.name}</span>

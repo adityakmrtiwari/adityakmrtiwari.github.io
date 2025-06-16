@@ -35,7 +35,10 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-black">
+    <section
+      id="contact"
+      className="relative py-20 min-h-[80vh] bg-[radial-gradient(circle_at_50%_40%,_rgba(255,192,203,0.10)_0%,_rgba(255,255,255,1)_100%)] dark:bg-[radial-gradient(circle_at_50%_40%,_rgba(30,30,30,0.95)_0%,_rgba(10,10,10,1)_100%)]"
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div 
@@ -61,9 +64,9 @@ const ContactSection: React.FC = () => {
               transition={{ duration: 0.5 }}
             >
               <motion.div 
-                className="bg-white dark:bg-gray-900/50 backdrop-blur-sm rounded-xl shadow-lg p-8 mb-8"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                className="group bg-white/80 dark:bg-black/40 backdrop-blur-md rounded-2xl shadow-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 p-8 mb-8 transition-all duration-300 hover:shadow-2xl hover:scale-[1.03]"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
                   Contact Information
@@ -133,12 +136,9 @@ const ContactSection: React.FC = () => {
               </motion.div>
               
               <motion.div 
-                className="bg-white dark:bg-gray-900/50 backdrop-blur-sm rounded-xl shadow-lg p-8"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                whileHover={{ scale: 1.02 }}
+                className="group bg-white/80 dark:bg-black/40 backdrop-blur-md rounded-2xl shadow-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 p-8 transition-all duration-300 hover:shadow-2xl hover:scale-[1.03]"
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
                   Follow Me
@@ -156,13 +156,13 @@ const ContactSection: React.FC = () => {
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                      className="flex items-center p-4 bg-white/80 dark:bg-black/40 backdrop-blur-md rounded-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 transition-all duration-300"
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileHover={{ y: -5 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       <span className="text-gray-800 dark:text-white font-medium">{social.name}</span>
                     </motion.a>
@@ -172,12 +172,9 @@ const ContactSection: React.FC = () => {
             </motion.div>
             
             <motion.div 
-              className="bg-white dark:bg-gray-900/50 backdrop-blur-sm rounded-xl shadow-lg p-8"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.02 }}
+              className="group bg-white/80 dark:bg-black/40 backdrop-blur-md rounded-2xl shadow-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 p-8 transition-all duration-300 hover:shadow-2xl hover:scale-[1.03]"
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.98 }}
             >
               <h3 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
                 Send Me a Message

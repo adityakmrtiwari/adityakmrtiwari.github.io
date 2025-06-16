@@ -167,7 +167,10 @@ const ProjectsSection: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-black">
+    <section
+      id="projects"
+      className="relative py-20 min-h-[80vh] bg-[radial-gradient(circle_at_50%_40%,_rgba(255,192,203,0.10)_0%,_rgba(255,255,255,1)_100%)] dark:bg-[radial-gradient(circle_at_50%_40%,_rgba(30,30,30,0.95)_0%,_rgba(10,10,10,1)_100%)]"
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -197,16 +200,16 @@ const ProjectsSection: React.FC = () => {
               <motion.button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-4 py-2 rounded-lg transition-colors font-semibold ${
+                className={`px-4 py-2 rounded-lg transition-all duration-300 font-semibold border-2 border-transparent hover:border-white dark:hover:border-white/30 ${
                   activeFilter === category
                     ? "bg-blue-500 text-white"
-                    : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800"
+                    : "bg-white/80 dark:bg-black/40 backdrop-blur-md text-gray-700 dark:text-gray-300"
                 }`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
                 {category}
               </motion.button>
@@ -218,12 +221,13 @@ const ProjectsSection: React.FC = () => {
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                className="bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all group"
+                className="group bg-white/80 dark:bg-black/40 backdrop-blur-md rounded-2xl shadow-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
+                whileTap={{ scale: 0.98 }}
               >
                 <div className="h-56 overflow-hidden relative">
                   <motion.img
@@ -304,9 +308,9 @@ const ProjectsSection: React.FC = () => {
               href="https://github.com/adityakmrtiwari"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600 text-white font-medium rounded-lg transition-colors shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white/80 dark:bg-black/40 backdrop-blur-md border-2 border-transparent hover:border-white dark:hover:border-white/30 rounded-lg shadow-lg text-gray-800 dark:text-white font-medium transition-all duration-300"
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.98 }}
             >
               <FaGithub size={18} />
               <span>View More on GitHub</span>
