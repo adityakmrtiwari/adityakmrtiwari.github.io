@@ -69,7 +69,7 @@ const AboutSection: React.FC = () => {
                   },
                   {
                     name: 'Codeforces',
-                    url: 'https://www.codeforces.com/profile/adityakmrtiwari',
+                    url: 'https://codeforces.com/profile/aaditya_',
                     icon: '/icons/codeforces.png',
                   },
                   {
