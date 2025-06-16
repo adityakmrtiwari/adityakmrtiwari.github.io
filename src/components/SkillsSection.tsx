@@ -76,6 +76,7 @@ const SkillsSection: React.FC = () => {
         { name: 'Computer Networks', icon: Cloud },
         { name: 'Machine Learning', icon: Zap },
         { name: 'Artificial Intelligence', icon: Zap },
+        { name: 'High Performance Computing', icon: Zap },
       ],
     },
     {

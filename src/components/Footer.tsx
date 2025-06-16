@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="font-semibold text-lg mb-4 text-gray-300 dark:text-gray-400">Links</h4>
               <ul className="space-y-3">
-                {['home', 'about', 'projects', 'contact'].map((section) => (
+                {['about', 'projects', 'contact'].map((section) => (
                   <li key={section}>
                     <a
                       href={`#${section}`}
@@ -47,10 +47,10 @@ const Footer: React.FC = () => {
               <h4 className="font-semibold text-lg mb-4 text-gray-300 dark:text-gray-400">Connect</h4>
               <ul className="space-y-3">
                 {[
-                  { name: 'GitHub', url: 'https://github.com' },
-                  { name: 'LinkedIn', url: 'https://linkedin.com' },
-                  { name: 'Twitter', url: 'https://twitter.com' },
-                  { name: 'Medium', url: 'https://medium.com' },
+                  { name: 'GitHub', url: 'https://www.linkedin.com/in/adityakmrtiwari/ ' },
+                  { name: 'LinkedIn', url: 'https://github.com/adityakmrtiwari' },
+                  // { name: 'Twitter', url: 'https://twitter.com' },
+                  // { name: 'Medium', url: 'https://medium.com' },
                 ].map(({ name, url }) => (
                   <li key={name}>
                     <a
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
           <p className="text-gray-500 dark:text-gray-400 text-sm">
-            © {new Date().getFullYear()} Your Name. All rights reserved.
+            © {new Date().getFullYear()} Aditya. All rights reserved.
           </p>
 
           <button

@@ -85,7 +85,7 @@ const ContactSection: React.FC = () => {
                         Email
                       </h4>
                       <p className="text-gray-600 dark:text-gray-400">
-                        example@example.com
+                        adityakmrtiwari@gmail.com
                       </p>
                     </div>
                   </motion.div>
@@ -105,7 +105,7 @@ const ContactSection: React.FC = () => {
                         Phone
                       </h4>
                       <p className="text-gray-600 dark:text-gray-400">
-                        +1 (123) 456-7890
+                        +91 9507761511
                       </p>
                     </div>
                   </motion.div>
@@ -125,7 +125,7 @@ const ContactSection: React.FC = () => {
                         Location
                       </h4>
                       <p className="text-gray-600 dark:text-gray-400">
-                        City, Country
+                        Bihar, India
                       </p>
                     </div>
                   </motion.div>
@@ -146,10 +146,10 @@ const ContactSection: React.FC = () => {
                 
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { name: 'GitHub', url: 'https://github.com' },
-                    { name: 'LinkedIn', url: 'https://linkedin.com' },
-                    { name: 'Twitter', url: 'https://twitter.com' },
-                    { name: 'Medium', url: 'https://medium.com' }
+                    { name: 'GitHub', url: 'https://github.com/adityakmrtiwari' },
+                    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/adityakmrtiwari/ ' },
+                    // { name: 'Twitter', url: 'https://twitter.com' },
+                    // { name: 'Medium', url: 'https://medium.com' }
                   ].map((social, index) => (
                     <motion.a
                       key={social.name}
