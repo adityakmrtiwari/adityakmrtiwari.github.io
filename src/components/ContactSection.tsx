@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+
+// EmailJS configuration
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactSection: React.FC = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,27 +18,45 @@ const ContactSection: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      if (!formRef.current) return;
+
+      const result = await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.status === 200) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setSubmitted(false);
+        }, 5000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setError('Failed to send message. Please try again later or contact me directly via email.');
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 5000);
-    }, 1500);
+    }
   };
 
   return (
@@ -148,8 +173,6 @@ const ContactSection: React.FC = () => {
                   {[
                     { name: 'GitHub', url: 'https://github.com/adityakmrtiwari' },
                     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/adityakmrtiwari/ ' },
-                    // { name: 'Twitter', url: 'https://twitter.com' },
-                    // { name: 'Medium', url: 'https://medium.com' }
                   ].map((social, index) => (
                     <motion.a
                       key={social.name}
@@ -189,7 +212,16 @@ const ContactSection: React.FC = () => {
                   Thank you for your message! I'll get back to you soon.
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit}>
+                <form ref={formRef} onSubmit={handleSubmit}>
+                  {error && (
+                    <motion.div 
+                      className="bg-red-100 dark:bg-red-900/50 backdrop-blur-sm text-red-700 dark:text-red-300 p-4 rounded-lg mb-6"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                    >
+                      {error}
+                    </motion.div>
+                  )}
                   <div className="space-y-6">
                     {[
                       { label: 'Your Name', type: 'text', name: 'name' },
@@ -250,7 +282,7 @@ const ContactSection: React.FC = () => {
                       className={`flex items-center justify-center w-full px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-all shadow-lg hover:shadow-xl ${
                         isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
                       }`}
-                      whileHover={{ scale: 1.02 }}
+                      whileHover={{ y: -5 }}
                       whileTap={{ scale: 0.98 }}
                     >
                       {isSubmitting ? (

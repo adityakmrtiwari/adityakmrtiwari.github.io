@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import FloatingIcons from "../components/FloatingIcons";
-import QuickLinksBar from './QuickLinksBar';
+// import QuickLinksBar from './QuickLinksBar';
 
 const HomeSection: React.FC = () => {
   const typingRef = useRef<HTMLSpanElement>(null);
