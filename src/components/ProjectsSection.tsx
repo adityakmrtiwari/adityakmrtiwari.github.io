@@ -217,11 +217,11 @@ const ProjectsSection: React.FC = () => {
           </motion.div>
 
           {/* Project Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
-                className="group bg-white/80 dark:bg-black/40 backdrop-blur-md rounded-2xl shadow-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] overflow-hidden"
+                className="flex flex-col p-6 group bg-white/80 dark:bg-black/40 backdrop-blur-md rounded-2xl shadow-lg border-2 border-transparent hover:border-white dark:hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:scale-[1.03] overflow-hidden"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

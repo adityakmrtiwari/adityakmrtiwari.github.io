@@ -27,8 +27,8 @@ const certificates = [
   },
   {
     id: 4,
-    name: 'JavaScript Algorithms and Data Structures',
-    issuer: 'freeCodeCamp',
+    name: 'JavaScript',
+    issuer: 'HackerRank',
     date: 'Dec 2021',
     link: 'https://example.com/cert'
   },
