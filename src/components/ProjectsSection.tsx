@@ -95,7 +95,7 @@ const ProjectsSection: React.FC = () => {
       id: 3,
       title: "Bookstore App",
       description:
-        "A CRUD-based bookstore app with JWT login authentication and MongoDB integration.",
+        "A modern, responsive full-stack web application for managing personal book collections with user authentication, CRUD operations, and beautiful UI/UX.",
       image: "/images/bookstore-app.png",
       technologies: ["React", "Node.js", "MongoDB", "Express"],
       liveUrl: "https://bookstore-psi-lime.vercel.app/",
@@ -104,6 +104,17 @@ const ProjectsSection: React.FC = () => {
     },
     {
       id: 4,
+      title: "AI CoDe Reviewer",
+      description:
+        "AI-powered code review platform built with React, Node.js & MongoDB. Instantly analyze and improve code with smart AI suggestions, secure login, and a sleek modern UI.",
+      image: "/images/ai-code-review.png",
+      technologies: ["React", "Node.js", "MongoDB", "Express"],
+      liveUrl: "https://bookstore-psi-lime.vercel.app/",
+      repoUrl: "https://github.com/adityakmrtiwari/Ai_CoDE_Reviewer",
+      category: "AI",
+    },
+    {
+      id: 5,
       title: "Weather Tracker",
       description:
         "Real-time weather dashboard with API integration and responsive charts.",
@@ -114,7 +125,7 @@ const ProjectsSection: React.FC = () => {
       category: "Frontend",
     },
     {
-      id: 5,
+      id: 6,
       title: "Portfolio Website",
       description:
         "Personal developer portfolio to showcase projects and resume with responsive design.",
@@ -125,7 +136,7 @@ const ProjectsSection: React.FC = () => {
       category: "Frontend",
     },
     {
-      id: 6,
+      id: 7,
       title: "Rock Paper Scissors Game",
       description:
         "A fun interactive Rock Paper Scissors game built with HTML, CSS, and JavaScript.",
@@ -136,7 +147,7 @@ const ProjectsSection: React.FC = () => {
       category: "Frontend",
     },
     {
-      id: 7,
+      id: 8,
       title: "Task Manager API",
       description:
         "A RESTful API for managing tasks with features like user authentication, CRUD operations, and JWT-based security.",
@@ -233,8 +244,8 @@ const ProjectsSection: React.FC = () => {
                   <motion.img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
+                    className="w-full h-full object-contain"
+                    whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
