@@ -13,10 +13,10 @@ const HomeSection: React.FC = () => {
     if (!typingRef.current) return;
 
     const words = [
-      "Software Architect",
-      "Tech Innovator",
       "Full Stack Developer",
-      "Creative Coder",
+      "Tech Explorer",
+      "AI/ML Enthusiast",
+      "Creative Problem Solver",
     ];
 
     let wordIndex = 0;
@@ -103,7 +103,7 @@ const HomeSection: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
           >
-            <span>I'm&nbsp;</span>
+            <span>I'm a&nbsp;</span>
             <span className="relative inline-flex items-center min-h-[1.5em]">
               <span ref={typingRef} className="whitespace-nowrap"></span>
               <span className="absolute left-full top-1/2 -translate-y-1/2 animate-blink text-blue-600 dark:text-blue-400">

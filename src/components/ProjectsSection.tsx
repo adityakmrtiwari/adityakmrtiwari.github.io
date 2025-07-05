@@ -78,7 +78,8 @@ const ProjectsSection: React.FC = () => {
         "A real-time chat application using Socket.IO with multiple rooms and user presence tracking.",
       image: "/images/chat-app.png",
       technologies: ["Node.js", "Socket.IO", "Express", "HTML/CSS"],
-      repoUrl: "https://github.com/adityakmrtiwari/iChatApp",
+      liveUrl: "https://chit-chat-beige.vercel.app/",
+      repoUrl: "https://github.com/adityakmrtiwari/ChitChat",
       category: "Full Stack",
     },
     {
@@ -109,7 +110,7 @@ const ProjectsSection: React.FC = () => {
         "AI-powered code review platform built with React, Node.js & MongoDB. Instantly analyze and improve code with smart AI suggestions, secure login, and a sleek modern UI.",
       image: "/images/ai-code-review.png",
       technologies: ["React", "Node.js", "MongoDB", "Express"],
-      liveUrl: "https://bookstore-psi-lime.vercel.app/",
+      liveUrl: "https://ai-code-reviewer-ten-tau.vercel.app/",
       repoUrl: "https://github.com/adityakmrtiwari/Ai_CoDE_Reviewer",
       category: "AI",
     },
