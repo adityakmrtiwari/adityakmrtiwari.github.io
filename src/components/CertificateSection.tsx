@@ -6,47 +6,112 @@ import { motion } from 'framer-motion';
 const certificates = [
   {
     id: 1,
-    name: 'AWS Certified Solutions Architect',
-    issuer: 'Amazon Web Services',
-    date: 'Oct 2022',
-    link: 'https://example.com/cert'
+    name: 'IBM Machine Learning',
+    issuer: 'IBM',
+    date: 'June 2025',
+    link: 'https://drive.google.com/file/d/12OJ96XaolTe0S8ptYhj5mDXqCyVwfZKE/view?usp=drive_link'
   },
   {
     id: 2,
-    name: 'Professional Full-Stack Engineer',
-    issuer: 'Meta',
-    date: 'Aug 2022',
-    link: 'https://example.com/cert'
+    name: 'Full Stack Internship',
+    issuer: 'Tecosys AI Pvt. Ltd.',
+    date: 'Jun 2025',
+    link: 'https://drive.google.com/file/d/1swzrxgMi54_brNnEscmkO13VvxsRJP5k/view?usp=sharing'
   },
   {
     id: 3,
-    name: 'React Nanodegree',
-    issuer: 'Udacity',
-    date: 'Mar 2022',
-    link: 'https://example.com/cert'
+    name: 'Fundamentals of Docker & Kubernetes',
+    issuer: 'SCALAR Masterclass',
+    date: 'May 2025',
+    link: 'https://drive.google.com/file/d/1ZBN0jwzXzi0Xhebb9Ro_Kans5nyKykzT/view?usp=sharing'
   },
   {
     id: 4,
-    name: 'JavaScript',
+    name: 'Software Engineer Intern Role Certificate',
     issuer: 'HackerRank',
-    date: 'Dec 2021',
-    link: 'https://example.com/cert'
+    date: 'Mar 2025',
+    link: 'https://www.hackerrank.com/certificates/350caa02009f'
   },
   {
     id: 5,
-    name: 'TypeScript Certification',
-    issuer: 'Microsoft',
-    date: 'Sep 2021',
-    link: 'https://example.com/cert'
+    name: 'AI/ML Virtual Internship',
+    issuer: 'AICTE – EduSkills & Google Developers',
+    date: 'Mar 2025',
+    link: 'https://drive.google.com/file/d/1xf5GCKfaLb3joqqmM3DxvjANbFcKkpE7/view?usp=drive_link'
   },
   {
     id: 6,
-    name: 'Node.js Application Developer',
-    issuer: 'OpenJS Foundation',
-    date: 'Jul 2021',
-    link: 'https://example.com/cert'
+    name: 'Data Analytics Job Simulation',
+    issuer: 'Deloitte',
+    date: '2025',
+    link: 'https://drive.google.com/file/d/13BMKy1N6ovQRCgAWXichxIyZOWRJa2Lc/view?usp=sharing'
+  },
+  {
+    id: 7,
+    name: 'IBM DevOps and Software Engineering',
+    issuer: 'IBM',
+    date: '2025',
+    link: 'https://drive.google.com/file/d/1a6cyQiScte2-Ayk8pVB0iG-wr_f_HJvE/view?usp=drive_link'
+  },
+  {
+    id: 8,
+    name: 'AWS Academy Graduate - Cloud Architecting',
+    issuer: 'AWS Academy',
+    date: 'Dec 2024',
+    link: 'https://drive.google.com/file/d/1OJWc-8mG0ZdgnMM_K_8fgA3HTQiK1EFJ/view?usp=sharing'
+  },
+  {
+    id: 9,
+    name: 'Cloud Virtual Internship',
+    issuer: 'AWS Academy – EduSkills',
+    date: 'Dec 2024',
+    link: 'https://drive.google.com/file/d/1QeH-L0A3dPGLXGqJ5kmIxeWdtUNxDJMn/view?usp=sharing'
+  },
+  {
+    id: 10,
+    name: 'SQL (Advanced)',
+    issuer: 'HackerRank',
+    date: 'Oct 2024',
+    link: 'https://www.hackerrank.com/certificates/19c085ef4c7d'
+  },
+  {
+    id: 11,
+    name: 'Certificate of Excellence– Coincent Partnership Program',
+    issuer: 'Robotics Club IIT Guwahati',
+    date: 'Mar 2024',
+    link: 'https://drive.google.com/file/d/1DGWV8q8I-7jVNHHGLT8R0TWq6v-CAorg/view?usp=sharing'
+  },
+  {
+    id: 12,
+    name: 'JavaScript (Basic)',
+    issuer: 'HackerRank',
+    date: 'May 2023',
+    link: 'https://www.hackerrank.com/certificates/efbe629c8882'
+  },
+  {
+    id: 13,
+    name: 'Data Processing Specialist',
+    issuer: 'AMCAT',
+    date: '2023',
+    link: 'https://www.myamcat.com/certificate/33489931/data-processing-specialist/211'
+  },
+  {
+    id: 14,
+    name: 'DSA in Java',
+    issuer: 'Udemy',
+    date: '2023',
+    link: 'https://www.udemy.com/certificate/UC-515f2781-e092-4a3a-9d54-a546317701ae/'
+  },
+  {
+    id: 15,
+    name: 'Frontend Web Development',
+    issuer: 'Microsoft Learn Student Ambassador',
+    date: '2023',
+    link: 'https://drive.google.com/file/d/1L5W4WxNthpocN9UbhVC7P-y6P3DKXBob/view?usp=sharing'
   }
 ];
+
+
 
 const CertificateSection: React.FC = () => {
   return (

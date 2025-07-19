@@ -36,7 +36,7 @@ const ExperienceSection: React.FC = () => {
         "Git",
         "REST APIs",
       ],
-      certificateUrl: "https://drive.google.com/file/d/1o0EPrVoTjX9izuQwSf3uW3YWClA0Uo8N/view?usp=sharing",
+      certificateUrl: "https://drive.google.com/file/d/1swzrxgMi54_brNnEscmkO13VvxsRJP5k/view?usp=drive_link",
     },
     {
       id: 2,
