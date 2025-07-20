@@ -135,7 +135,7 @@ const AboutSection: React.FC = () => {
     },
     {
       name: "Codolio",
-      url: "https://www.codingninjas.com/codolio/adityakmrtiwari",
+      url: "https://codolio.com/profile/adityakmrtiwari",
       icon: "/icons/codolio.jpeg",
       stats: {
         problemsSolved: 458,
