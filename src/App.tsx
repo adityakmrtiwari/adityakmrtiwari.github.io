@@ -30,7 +30,7 @@ function App() {
   });
 
   useEffect(() => {
-    document.title = 'Aditya Kumar Tiwari | Portfolio';
+    document.title = 'Aditya Kumar Tiwari';
   }, []);
 
   useEffect(() => {

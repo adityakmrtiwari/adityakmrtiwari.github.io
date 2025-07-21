@@ -154,7 +154,8 @@ const ProjectsSection: React.FC = () => {
         "A RESTful API for managing tasks with features like user authentication, CRUD operations, and JWT-based security.",
       image: "/images/task-api.png",
       technologies: ["Node.js", "Express", "MongoDB", "JWT"],
-      repoUrl: "https://github.com/adityakmrtiwari/task-manager-api", // replace with your actual repo link
+      liveUrl: "https://to-do-omega-bay.vercel.app/",
+      repoUrl: "https://github.com/adityakmrtiwari/ToDo",
       category: "Backend",
     },
   ];
