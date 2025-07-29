@@ -110,7 +110,7 @@ const ProjectsSection: React.FC = () => {
         "AI-powered code review platform built with React, Node.js & MongoDB. Instantly analyze and improve code with smart AI suggestions, secure login, and a sleek modern UI.",
       image: "/images/ai-code-review.png",
       technologies: ["React", "Node.js", "MongoDB", "Express"],
-      liveUrl: "https://ai-code-reviewer-ten-tau.vercel.app/",
+      liveUrl: "https://ai-co-de-reviewer.vercel.app/review",
       repoUrl: "https://github.com/adityakmrtiwari/Ai_CoDE_Reviewer",
       category: "AI",
     },
