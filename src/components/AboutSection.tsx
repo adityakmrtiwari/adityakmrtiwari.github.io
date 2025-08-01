@@ -80,7 +80,7 @@ const AboutSection: React.FC = () => {
       url: "https://leetcode.com/adityakmrtiwari/",
       icon: "/icons/leetcode.png",
       stats: {
-        problemsSolved: leetcodeStats?.totalSolved ?? "370",
+        problemsSolved: leetcodeStats?.totalSolved ?? "400",
         rating: leetcodeStats?.ranking ?? "1609",
       },
       description:
@@ -93,7 +93,7 @@ const AboutSection: React.FC = () => {
       stats: {
         problemsSolved: 100,
         rating: 1085,
-        contestsParticipated: 15,
+        contestsParticipated: 17,
       },
       description:
         "Engaged in competitive programming, showcasing speed and efficient problem-solving. Dedicated to improving logical thinking and coding precision through contests.",
@@ -138,7 +138,7 @@ const AboutSection: React.FC = () => {
       url: "https://codolio.com/profile/adityakmrtiwari",
       icon: "/icons/codolio.jpeg",
       stats: {
-        problemsSolved: 458,
+        problemsSolved: 520,
       },
       description:
         "Comprehensive overview of coding achievements and competitive programming performance. Highlighting a strong portfolio of solved problems and skill mastery.",
